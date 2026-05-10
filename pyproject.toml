@@ -1,0 +1,29 @@
+[project]
+name = "refugeeconnect"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dash>=4.1.0",
+    "dash-bootstrap-components>=2.0.4",
+    "dash-leaflet>=1.0.15",
+    "fastapi>=0.135.3",
+    "google-adk>=1.29.0",
+    "google-generativeai>=0.8.6",
+    "gunicorn>=25.3.0",
+    "httpx>=0.28.1",
+    "litellm>=1.83.0",
+    "networkx>=3.6.1",
+    "numpy>=2.4.4",
+    "osmnx>=2.1.0",
+    "pandas>=3.0.2",
+    "plotly>=6.7.0",
+    "pytest>=9.0.3",
+    "python-dotenv>=1.2.2",
+    "requests>=2.33.1",
+    "uvicorn>=0.44.0",
+]
+
+[tool.uv.sources]
+google-adk = { git = "https://github.com/jfrometa88/adk-python.git", rev = "fix/gemma4-tool-response-payload" }

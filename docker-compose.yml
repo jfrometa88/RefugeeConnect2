@@ -1,0 +1,46 @@
+services:
+  api_app:
+    build:
+      context: ./api_app
+      dockerfile: Dockerfile.api
+    container_name: refugeeconnect_api
+    volumes:
+      - ./common:/common:rw
+    environment:
+      PYTHONPATH: "/app:/common"
+      # Ollama host: overridden per deployment scenario (see root .env)
+      OLLAMA_HOST: "${OLLAMA_HOST:-http://host.docker.internal:11434}"
+    env_file:
+      - ./api_app/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - refugeeconnect_network
+    restart: always
+    # Needed on Linux to resolve host.docker.internal (Scenario 1 & 2-host)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+ 
+  dash_app:
+    build:
+      context: ./dash_app
+      dockerfile: Dockerfile.dash
+    container_name: refugeeconnect_dash
+    volumes:
+      - ./common:/common:ro
+    environment:
+      PYTHONPATH: "/app:/common"
+      API_URL: "http://api_app:8000"
+    env_file:
+      - ./dash_app/.env
+    ports:
+      - "8601:8601"
+    networks:
+      - refugeeconnect_network
+    restart: always
+    depends_on:
+      - api_app
+
+networks:
+  refugeeconnect_network:
+    driver: bridge

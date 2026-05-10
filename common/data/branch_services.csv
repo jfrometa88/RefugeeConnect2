@@ -1,0 +1,22 @@
+branch_id,service_id,requirements,notes
+3,1,"Derivación oficial, requiere documentación como solicitantes de protección","Acogida, orientación y seguimiento temporal para solicitantes de protección."
+9,1,Atención a personas vulnerables en general,Acogida temporal y puntual según capacidad
+10,1,Atención a personas vulnerables en general,Acogida temporal y puntual según capacidad
+11,1,Atención a personas vulnerables en general,Acogida temporal y puntual según capacidad
+1,2,Necesidad de orientación legal,Dependiendo del estado del proceso legal de solicitud de protección
+2,2,Necesidad de orientación legal,Dependiendo del estado del proceso legal de solicitud de protección
+3,2,Necesidad de orientación legal,Dependiendo del estado del proceso legal de solicitud de protección
+4,3,Depende de autorización a trabajar,"Dependiendo de la autorización puede ser solo orientación (si no se tiene autorización) o asistencia, cursos y bolsa de empleo"
+7,3,Depende de autorización a trabajar,"Dependiendo de la autorización puede ser solo orientación (si no se tiene autorización) o asistencia, cursos y bolsa de empleo"
+5,3,Depende de autorización a trabajar,"Dependiendo de la autorización puede ser solo orientación (si no se tiene autorización) o asistencia, cursos y bolsa de empleo"
+8,3,Depende de autorización a trabajar,"Dependiendo de la autorización puede ser solo orientación (si no se tiene autorización) o asistencia, cursos y bolsa de empleo"
+6,4,Carencia de recursos,Orientación sobre los mecanismos para acceder a la atención sanitaria en el servicio público
+10,4,Carencia de recursos,Orientación sobre los mecanismos para acceder a la atención sanitaria en el servicio público
+11,4,Carencia de recursos,Orientación sobre los mecanismos para acceder a la atención sanitaria en el servicio público
+4,5,Carencia de recursos,Servicio de comedores sociales u orientación para acceder a ellos
+9,5,Carencia de recursos,Servicio de comedores sociales u orientación para acceder a ellos
+10,5,Carencia de recursos,Servicio de comedores sociales u orientación para acceder a ellos
+11,5,Carencia de recursos,Servicio de comedores sociales u orientación para acceder a ellos
+6,6,Carencia de recursos,"Orientación, los menores de edad tienen atención diferenciada independientemete de su situación legal o de sus responsables"
+10,6,Carencia de recursos,"Orientación, los menores de edad tienen atención diferenciada independientemete de su situación legal o de sus responsables"
+11,6,Carencia de recursos,"Orientación, los menores de edad tienen atención diferenciada independientemete de su situación legal o de sus responsables"

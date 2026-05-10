@@ -1,0 +1,11 @@
+pandas
+numpy
+google_generativeai
+python-dotenv
+google-adk @ git+https://github.com/jfrometa88/adk-python.git@fix/gemma4-tool-response-payload
+requests
+fastapi
+uvicorn
+pytest
+litellm
+httpx

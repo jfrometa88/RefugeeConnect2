@@ -1,0 +1,12 @@
+id,organization_id,city,address,latitude,longitude,opening_hours,local_phone
+1,1,Valencia,"Carrer de Mossén Fenollar, 9, Patraix, 46007 València, Valencia",39.4613874,-0.3936286,9:00,963496977
+2,2,Valencia,"Carrer de Francisco Moreno Does, 21, 46018 Valencia",39.467521,-0.395812,9:00,963162477
+3,3,Valencia,"CARRER Ciudad Gran Turia, Carrer de la Creu Roja 2",39.4625707,-0.4162467,8:00,963802244
+4,4,Valencia,"Pl. Cisneros, 5 - València",39.4781138,-0.3784035,9:00,963919205
+5,5,Valencia,Avda. de la Constitución  254 Bajo izq. – 46019 – Valencia,39.4965651,-0.3733333,10:00,963660168
+6,3,Valencia,"C/ de Guillem de Castro, 162, Ciutat Vella, 46003",39.48079,-0.37936,8:30,963606211
+7,3,Valencia,"Carrer de Berni i Català, 53, Rascanya, 46019 València, Valencia",39.4939,-0.37722,9:00,962565168
+8,4,Valencia,"C/ de l/Escultor Josep Capuz, 8, Quatre Carreres, 46004 València, Valencia",39.46182,-0.36311,9:00,No registrado
+9,6,Valencia,"Pg. de la Petxina, 9, Extramurs, 46008",39.47834,-0.38669,8:30,963911726
+10,7,Valencia,"C. de l/Hostal de Morella, 2, Ciutat Vella, 46003",39.47771,-0.37966,9:00,962084167
+11,7,Valencia,"C/ del Gravador Enguídanos, 47, Campanar, 46035",39.480178,-0.39713,9:00,962082775
