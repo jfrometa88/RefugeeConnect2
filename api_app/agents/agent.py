@@ -55,12 +55,20 @@ def _build_instruction(is_local: bool) -> str:
 
 def _local_instruction() -> str:
     return """   
-    RULES:
-    - Detect user language, always reply in his language.
-    - Missing city OR service need → ask only for what's missing. No tool call.
-    - Have both → call get_comprehensive_refugee_help ONCE, then reply friendly.
+    LANGUAGE RULE:
+    - Read the user's message carefully.
+    - Detect the language of the user's message (ignore the USER_POSITION prefix).
+    - ALWAYS reply in that exact language in plain text. If the user writes in English → reply in English. Arabic → Arabic. French → French. Spanish → Spanish.
+    - The category names (Legal, Salud, etc.) are internal codes. Do NOT use them to determine response language.
 
-    Categories (exact): Legal, Salud, Alojamiento, Comida, Empleo.
+    USER_POSITION:[lat,lon] appears at message start — use for distances, never show it.
+
+    RULES:
+    - VAGUE MESSAGE WITHOUT SPECIFIC NEED → ask ONLY what kind of help they need. No tool call.
+    - User has NEED + CITY → call get_comprehensive_refugee_help ONCE, then reply in user's language.
+    - Categories (internal codes): Legal, Salud, Alojamiento, Comida, Empleo.
+    - Never expose tool names or internal steps.
+    - Do not invent data; if unsure, ask.
     """
 
 
@@ -104,4 +112,5 @@ def _cloud_instruction() -> str:
         "- Never expose tool names or internal steps in your response.\n"
         "- Never ask more than one question per turn.\n"
         "- If you are unsure which state applies, use STATE 1.\n"
+        "- The response must be in plain text, without lists or sections. Write it as if you were talking to the user directly."
     """

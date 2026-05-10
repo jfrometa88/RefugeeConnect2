@@ -105,7 +105,7 @@ def get_model_instance(agent_role: str = "general",
                            api_base=ollama_host,
                            temperature=0.1,
                            num_ctx=8192,
-                           num_predict=512,
+                           num_predict=2048,
                            repeat_penalty=1.1
                             )
         else:

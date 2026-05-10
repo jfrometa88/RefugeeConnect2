@@ -172,16 +172,8 @@ def check_gemma4_in_ollama(health: dict) -> dbc.Alert | None:
     """
     if not health.get("ollama_available", False):
         return None  # Ollama no está, la advertencia no aplica
- 
-    local_models = health.get("local_models", [])
-    gemma4_base = GEMMA4_MODEL_NAME.split(":")[0]
- 
-    gemma4_present = any(gemma4_base in m or "gemma4" in m or "gemma-4" in m for m in local_models)
- 
-    if gemma4_present:
-        return None
- 
-    return dbc.Alert(
+
+    alert = dbc.Alert(
         [
             html.I(className="fa-solid fa-triangle-exclamation me-2"),
             html.Strong("Gemma 4 no detectada en Ollama./لم يتم اكتشاف الجوهرة 4 في أولاما./Gemma 4 non détectée dans Ollama."),
@@ -197,6 +189,25 @@ def check_gemma4_in_ollama(health: dict) -> dbc.Alert | None:
         style={"fontSize": "0.85em", "marginBottom": "8px"},
         id="gemma4-warning-alert",
     )
+ 
+    local_model = health.get("selected_local_model", None)    
+
+    if local_model is None:
+        return alert
+        
+    gemma4_base = GEMMA4_MODEL_NAME.split(":")[0]
+
+    logger.info(f"check: {local_model}")
+    
+    if gemma4_base in local_model or "gemma4" in local_model:
+        gemma4_present = True
+    else:
+        gemma4_present = False
+ 
+    if gemma4_present:
+        return None
+ 
+    return alert
 
 
 def build_marker(resource: dict) -> dl.CircleMarker:
@@ -739,9 +750,11 @@ def toggle_backend_mode(switch_value, selected_local_model):
     use_local = len(switch_value) > 0
     
     health = fetch_system_health()
+    health["selected_local_model"] = selected_local_model
+    logger.info(f"Revisando models: {selected_local_model}")
     alert = check_gemma4_in_ollama(health)
 
-    if use_local and not (health.get("ollama_available", False) and (selected_local_model is None or selected_local_model!= [""])):
+    if use_local and (health.get("ollama_available", False) == False or (selected_local_model is None or selected_local_model == [''])):
         warning_msg = dbc.Alert(
             "⚠️ Please check Ollama is running and select a Gemma 4 model/يرجى التحقق من أن Ollama يعمل واختر نموذج Gemma 4/Veuillez vérifier qu'Ollama fonctionne et sélectionner un modèle Gemma 4",
             color="warning",
