@@ -162,8 +162,8 @@ This experience reinforced a core lesson: local AI deployment is not just about 
 ### Quick Start with Docker
 
 ```bash
-git clone https://github.com/jfrometa88/RefugeeConnect.git
-cd RefugeeConnectAI
+git clone https://github.com/jfrometa88/RefugeeConnect2.git
+cd RefugeeConnect2
 docker-compose up --build
 ```
 
@@ -185,6 +185,35 @@ uv run python api_app/IA_api.py
 # In a separate terminal, start the frontend
 uv run python dash_app/app.py
 ```
+
+---
+
+## 🔧 Gemma4 Tool Compatibility
+
+Gemma's chat template expects `role="tool_responses"` for tool result messages, while LiteLLM's OpenAI-compatible default is `role="tool"`. Without correction, this mismatch causes agents to enter an **infinite tool-calling loop** — the model misinterprets the tool result as a new conversation turn and calls the tool again indefinitely.
+
+This was identified through deep-packet inspection of raw JSON payloads via `litellm._turn_on_debug()` and verified bidirectionally using `qwen2.5` as a proxy: qwen completes normally with `role="tool"`, but enters the same loop when forced to `role="tool_responses"`, confirming the fix targets the exact behavior Gemma's chat template requires.
+
+Two portable solutions are included. **Option B is active in this repository.**
+
+### Option A — Runtime patch (see RefugeeConnect repository)
+
+A targeted monkey-patch is applied at startup in `api_app/litellm_gemma_patch.py`, intercepting the assembled message list at the `_get_completion_inputs` boundary and rewriting the role field only for Gemma4 models — without modifying or replicating any internal library logic.
+
+```
+startup
+  └── api_app/litellm_gemma_patch.py
+        └── wraps _get_completion_inputs
+              └── role "tool" → "tool_responses"  (gemma4 only)
+```
+
+No changes to installed packages. Works with a standard `uv sync` or `pip install -r requirements.txt`.
+
+### Option B — Patched fork of `google-adk` *(default)*
+
+The fix is applied directly inside `_content_to_message_param` in a maintained fork of `google-adk`.
+
+> A pull request with this fix and full unit test coverage has been submitted upstream: [google/adk-python#5650](https://github.com/google/adk-python/issues/5650). If merged, both workarounds become unnecessary and can be removed.
 
 ---
 
@@ -210,7 +239,6 @@ refugeeconnect-ai/
 │   │   ├── agent.py                # Agent setup
 │   │   └── tracing_plugin.py       # AI trace configuration
 │   ├── config.py                   # Model & inference mode config (Cloud/Local detection)
-│   ├── litellm_gemma_patch.py      # Patch to change tool response payload to gemma4 in Ollama
 │   ├── Dockerfile.api
 │   └── requirements.txt
 │
