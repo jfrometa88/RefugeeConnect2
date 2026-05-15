@@ -213,7 +213,7 @@ No changes to installed packages. Works with a standard `uv sync` or `pip instal
 
 The fix is applied directly inside `_content_to_message_param` in a maintained fork of `google-adk`.
 
-> A pull request with this fix and full unit test coverage has been submitted upstream: [google/adk-python#5650](https://github.com/google/adk-python/issues/5650). If merged, both workarounds become unnecessary and can be removed.
+> A pull request with this fix and full unit test coverage has been submitted upstream: [google/adk-python#5655](https://github.com/google/adk-python/pull/5655). If merged, both workarounds become unnecessary and can be removed.
 
 ---
 
