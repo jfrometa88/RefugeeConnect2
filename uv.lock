@@ -612,7 +612,7 @@ wheels = [
 [[package]]
 name = "google-adk"
 version = "1.33.0"
-source = { git = "https://github.com/jfrometa88/adk-python.git?rev=fix%2Fgemma4-tool-response-payload#30d58305bc4241dd1e7fad6bffd6b9f79affc7f8" }
+source = { git = "https://github.com/jfrometa88/adk-python.git?rev=main#958d8383fcc9f8b1e603bf25fd23fff997cabc3d" }
 dependencies = [
     { name = "aiosqlite" },
     { name = "anyio" },
@@ -2665,7 +2665,7 @@ requires-dist = [
     { name = "dash-bootstrap-components", specifier = ">=2.0.4" },
     { name = "dash-leaflet", specifier = ">=1.0.15" },
     { name = "fastapi", specifier = ">=0.135.3" },
-    { name = "google-adk", git = "https://github.com/jfrometa88/adk-python.git?rev=fix%2Fgemma4-tool-response-payload" },
+    { name = "google-adk", git = "https://github.com/jfrometa88/adk-python.git?rev=main" },
     { name = "google-generativeai", specifier = ">=0.8.6" },
     { name = "gunicorn", specifier = ">=25.3.0" },
     { name = "httpx", specifier = ">=0.28.1" },

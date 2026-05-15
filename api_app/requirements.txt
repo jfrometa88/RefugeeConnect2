@@ -2,7 +2,7 @@ pandas
 numpy
 google_generativeai
 python-dotenv
-google-adk @ git+https://github.com/jfrometa88/adk-python.git@fix/gemma4-tool-response-payload
+google-adk @ git+https://github.com/jfrometa88/adk-python.git@main
 requests
 fastapi
 uvicorn

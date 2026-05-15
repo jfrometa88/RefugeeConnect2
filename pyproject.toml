@@ -26,4 +26,4 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-google-adk = { git = "https://github.com/jfrometa88/adk-python.git", rev = "fix/gemma4-tool-response-payload" }
+google-adk = { git = "https://github.com/jfrometa88/adk-python.git", rev = "main" }
